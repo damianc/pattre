@@ -14,7 +14,9 @@ module.exports = {
   resolve: {
     alias: {
       '@words': path.resolve(__dirname, 'src/words'),
-      '@anchors': path.resolve(__dirname, 'src/anchors')
+      '@pseudo-words': path.resolve(__dirname, 'src/pseudo-words'),
+      '@anchors': path.resolve(__dirname, 'src/anchors'),
+      '@utils': path.resolve(__dirname, 'src/utils')
     }
   }
 };

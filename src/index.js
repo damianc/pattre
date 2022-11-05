@@ -1,4 +1,12 @@
-import API from '@words';
+import WordsAPI from '@words';
+import PseudoWordsAPI from '@pseudo-words';
+import QuantifiersAPI from '@utils/quantifiers';
+
+const API = {
+  ...WordsAPI,
+  ...PseudoWordsAPI,
+  ...QuantifiersAPI
+};
 
 export default function Pattern(factory) {
   const reWordsArr = factory(API);

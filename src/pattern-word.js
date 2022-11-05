@@ -1,12 +1,12 @@
 import { PatternWordAnchor } from './pattern-word-anchor';
+import { parseQuantifier } from '@utils/parse-quantifier';
 
 export class PatternWord extends PatternWordAnchor {
   restr;
 
   constructor(word, occurs = 1) {
     super();
-    let occs = '';
-    if (occurs > 1) occs = `{${occurs}}`;
+    const occs = parseQuantifier(occurs);
     this.restr = word + occs;
   }
 

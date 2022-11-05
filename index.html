@@ -44,3 +44,31 @@ replaced = str.replace(patt, (_, { st, nd }) => nd + '' + st);
 
 console.log(str + ' -> ' + replaced);
 </script>
+
+
+<script>
+patt = Pattern(p => {
+  console.log(p);
+  return [
+    p.Digit(p.optional)
+  ];
+});
+str = 'AB12CD34';
+replaced = str.replace(patt, 'X');
+
+console.log(str + ' -> ' + replaced);
+</script>
+
+
+<script>
+patt = Pattern(p => [
+  p.Digit().as('st'),
+  p.group('restDigs', [
+    p.Digit(p.min(1))
+  ])
+]);
+str = 'AB1234CD5678';
+replaced = str.replace(patt, (_, { st, restDigs }) => restDigs + st);
+
+console.log(str + ' -> ' + replaced);
+</script>
