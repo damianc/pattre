@@ -52,6 +52,15 @@ str.replace(
 * `Digit(n)`
 * `Emoji(n)`
 
+### Words Anchors
+
+* `isFirst()`
+* `isLast()`
+* `isWord()`
+* `hasBefore()`
+* `hasAfter()`
+* `as()`
+
 ## Pseudo-Words
 
 * `group(name, words)`
