@@ -1,0 +1,46 @@
+<script src="pattre.js"></script>
+
+
+<script>
+let patt = Pattern(p => [
+  p.Digit().isLast()
+]);
+let str = 'AB12CD34';
+let replaced = str.replace(patt, 'X');
+
+console.log(str + ' -> ' + replaced);
+</script>
+
+
+<script>
+patt = Pattern(p => [
+  p.Digit(2)
+]);
+str = 'AB12CD34';
+replaced = str.replace(patt, num => num + '%');
+
+console.log(str + ' -> ' + replaced);
+</script>
+
+
+<script>
+patt = Pattern(p => [
+  p.Digit().as('num')
+]);
+str = 'AB12CD34';
+replaced = str.replace(patt, (_, { num }) => String(+num * 10));
+
+console.log(str + ' -> ' + replaced);
+</script>
+
+
+<script>
+patt = Pattern(p => [
+  p.Digit().as('st'),
+  p.Digit().as('nd')
+]);
+str = 'AB12CD34';
+replaced = str.replace(patt, (_, { st, nd }) => nd + '' + st);
+
+console.log(str + ' -> ' + replaced);
+</script>
