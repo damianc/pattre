@@ -1,0 +1,15 @@
+{
+  "name": "pattre",
+  "version": "1.0.0",
+  "description": "Library that internally deals with regular expressions; facade that exposes simplified interface to define patterns.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damianc/pattre.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "damianc",
+  "license": "ISC"
+}
