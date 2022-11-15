@@ -70,7 +70,7 @@ str.replace(
 | `Tab()` | | tab |
 | `NewLine()` | `Newline()` | new line |
 | `WhiteSpace()` | `Whitespace()` | white space like space or tab |
-| `Ref(n?,group)` | | value that equals one captured by given group |
+| `Ref(n?,group)`* | | value that equals one captured by given group |
 
 ## Pseudo-Words
 
