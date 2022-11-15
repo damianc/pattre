@@ -49,6 +49,8 @@ str.replace(
 
 ## Words
 
+* - Every word takes a number of occurences as a first parameter. It may be omitted and then defaults to `1`.
+
 | Word | Aliases | Matched stuff |
 |--|--|--|
 | `Letter()` | | any letter from any alphabet |
@@ -58,7 +60,7 @@ str.replace(
 | `LCLatin()` | | a-z |
 | `UCLatin()` | | A-Z |
 | `AlphaNum()` | | a-z, A-Z and 0-9 |
-| `Char(ch)` | | given character |
+| `Char(n?,ch)`* | | given character |
 | `Digit()` | | 0-9 |
 | `Bin()` | | 0 and 1 |
 | `Hex()` | | 0-9 and a-f/A-F |
