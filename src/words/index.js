@@ -4,6 +4,7 @@ import { UCLetter } from '@words/uc-letter';
 import { Latin } from '@words/latin';
 import { LCLatin } from '@words/lc-latin';
 import { UCLatin } from '@words/uc-latin';
+import { _String } from '@words/string';
 import { Char } from '@words/char';
 import { Digit } from '@words/digit';
 import { Bin } from '@words/bin';
@@ -94,6 +95,7 @@ const api = {
   Latin: n => new Latin(n),
   LCLatin: n => new LCLatin(n),
   UCLatin: n => new UCLatin(n),
+  String: (str, n) => new _String(str, n),
   Char: (char, n) => new Char(char, n),
   Digit: n => new Digit(n),
   Bin: n => new Bin(n),

@@ -64,6 +64,34 @@ addCase(
     ])
   ]
 );
+
+addCase(
+  'replace 2 preceding N != 4 with X',
+  '23242526', 'X324X5X6', ['X'],
+  p => [
+    p.Char(2).hasNotAfter(4)
+  ]
+);
+
+addCase(
+  'replace N preceded by 2 with X unless N = ',
+  '23242526-42444648', '2X242X2X-42444648', ['X'],
+  p => [
+    p.block([
+      p.oneOf([1,2,3,5,6,7,8,9,0])
+    ]).hasBefore(2)
+  ]
+);
+
+addCase(
+  'replace every 2X2X with XD',
+  '2A2X2A2X2X4A4X4X', '2A2X2AXD4A4X4X', ['XD'],
+  p => [
+    p.block([
+      p.Char(2), 'X'
+    ], 2)
+  ]
+);
 </script>
 
 <script>

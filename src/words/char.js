@@ -3,7 +3,7 @@ import { escapeChars } from '@utils/escape-chars';
 
 export class Char extends PatternWord {
   constructor(char, occurs) {
-    const first = char[0];
+    const first = String(char)[0];
     super(escapeChars(first), occurs);
   }
 }

@@ -75,6 +75,7 @@ str.replace(
 
 | Pseudo-Word | Description |
 |--|--|
+| `block()` | collect words into a block |
 | `group()` | capture a named group of words for latter use |
 | `oneOf()` | match one of words |
 
@@ -84,6 +85,8 @@ str.replace(
 |--|--|
 | `hasBefore(otherWord)` | word is preceded by another word |
 | `hasAfter(otherWord)` | word precedes other word |
+| `hasNotBefore(otherWord)` | word is not preceded by another word |
+| `hasNotAfter(otherWord)` | word does not precede other word |
 | `isFirst()` | word is very first word in given chain |
 | `isLast()` | word is very last word in given chain |
 | `isWord()` | word is a literal, entire word |
