@@ -1,74 +1,87 @@
 <script src="pattre.js"></script>
-
-
 <script>
-let patt = Pattern(p => [
-  p.Digit().isLast()
-]);
-let str = 'AB12CD34';
-let replaced = str.replace(patt, 'X');
-
-console.log(str + ' -> ' + replaced);
+const tests = [];
+function addCase(desc, input, expected, args, pattern) {
+  tests.push({
+    desc, input, expected, args, pattern
+  });
+}
 </script>
 
 
 <script>
-patt = Pattern(p => [
-  p.Digit(2)
-]);
-str = 'AB12CD34';
-replaced = str.replace(patt, num => num + '%');
+addCase(
+  'digit being last -> X',
+  'AB12CD34', 'AB12CD3X', ['X'],
+  p => [
+    p.Digit().isLast()
+  ]
+);
 
-console.log(str + ' -> ' + replaced);
+addCase(
+  '2 digits -> NN%',
+  'AB12CD34', 'AB12%CD34%', [num => num + '%'],
+  p => [
+    p.Digit(2)
+  ]
+);
+
+addCase(
+  'each digit -> N*10',
+  'AB12CD34', 'AB1020CD3040', [(_, { num }) => String(+num * 10)],
+  p => [
+    p.Digit().as('num')
+  ]
+);
+
+addCase(
+  'each digits AB -> BA (swap)',
+  'AB12CD34', 'AB21CD43', [(_, { st, nd }) => nd + '' + st],
+  p => [
+    p.Digit().as('st'),
+    p.Digit().as('nd')
+  ]
+)
+
+addCase(
+  'each digits ABBBB -> BBBBA (move 1st to end)',
+  'AB1234CD5678', 'AB2341CD6785', [(_, { st, restDigs }) => restDigs + st],
+  p => [
+    p.Digit().as('st'),
+    p.group('restDigs', [
+      p.Digit(p.min(1))
+    ])
+  ]
+);
+
+addCase(
+  'swap LC/UC of letters',
+  'ABcdEf', 'abCDeF', [(_, g) => g.lc ? g.lc.toUpperCase() : g.uc.toLowerCase()],
+  p => [
+    p.oneOf([
+      p.LC().as('lc'),
+      p.UC().as('uc')
+    ])
+  ]
+);
 </script>
 
-
 <script>
-patt = Pattern(p => [
-  p.Digit().as('num')
+Pattern(p => [
+  p.Char('(xd)')
 ]);
-str = 'AB12CD34';
-replaced = str.replace(patt, (_, { num }) => String(+num * 10));
 
-console.log(str + ' -> ' + replaced);
-</script>
+let i = 1;
+tests.forEach(test => {
+  const args = test.args || [];
+  const actual = test.input.replace(
+    Pattern(test.pattern),
+    ...args
+  );
 
-
-<script>
-patt = Pattern(p => [
-  p.Digit().as('st'),
-  p.Digit().as('nd')
-]);
-str = 'AB12CD34';
-replaced = str.replace(patt, (_, { st, nd }) => nd + '' + st);
-
-console.log(str + ' -> ' + replaced);
-</script>
-
-
-<script>
-patt = Pattern(p => {
-  console.log(p);
-  return [
-    p.Digit(p.optional)
-  ];
+  console.log(`%c${i++}%c ${test.desc}`, 'color:#fff;background-color:#2af;padding:0 4px', 'font-weight:bold');
+  console.log(`%c ${test.input} => ${test.expected}`, 'color:#aaa');
+  console.log(`%c %c ${actual}`, `background-color:${actual === test.expected ? 'green' : 'red'};padding:0 4px;border-top-right-radius:50%;border-bottom-right-radius:50%;font-size:10px`, actual === test.expected ? 'color:green' : 'color:red;font-weight:bold');
+  console.log('\n\n');
 });
-str = 'AB12CD34';
-replaced = str.replace(patt, 'X');
-
-console.log(str + ' -> ' + replaced);
-</script>
-
-
-<script>
-patt = Pattern(p => [
-  p.Digit().as('st'),
-  p.group('restDigs', [
-    p.Digit(p.min(1))
-  ])
-]);
-str = 'AB1234CD5678';
-replaced = str.replace(patt, (_, { st, restDigs }) => restDigs + st);
-
-console.log(str + ' -> ' + replaced);
 </script>

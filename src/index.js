@@ -13,9 +13,10 @@ export default function Pattern(factory) {
 
   const reChain = reWordsArr.join('');
   const re = new RegExp(reChain, 'gu');
+  console.log('RE', re);
 
   return {
-    flags: 'iug', // ??
+    // flags: 'iug', // ??
     [Symbol.replace](input, replacer) {
       if (typeof replacer === 'function') {
         const rec = new RegExp(re);

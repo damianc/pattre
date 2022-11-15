@@ -49,30 +49,57 @@ str.replace(
 
 ## Words
 
-* `Digit(n)`
-* `Emoji(n)`
-
-### Words Anchors
-
-* `isFirst()`
-* `isLast()`
-* `isWord()`
-* `hasBefore()`
-* `hasAfter()`
-* `as()`
+| Word | Aliases | Matched stuff |
+|--|--|--|
+| `Letter()` | | any letter from any alphabet |
+| `LCLetter()` | `Lowercase()`, `LC()` | lowercase letter from any alphabet |
+| `UCLetter()` | `Uppercase()`, `UC()` | uppercase letter from any alphabet |
+| `Latin()` | | a-z and A-Z |
+| `LCLatin()` | | a-z |
+| `UCLatin()` | | A-Z |
+| `AlphaNum()` | | a-z, A-Z and 0-9 |
+| `Char(ch)` | | given character |
+| `Digit()` | | 0-9 |
+| `Bin()` | | 0 and 1 |
+| `Hex()` | | 0-9 and a-f/A-F |
+| `Any()` | | any character |
+| `Emoji()` | | emoji |
+| `Space()` | | space |
+| `Tab()` | | tab |
+| `NewLine()` | `Newline()` | new line |
+| `WhiteSpace()` | `Whitespace()` | white space like space or tab |
 
 ## Pseudo-Words
 
-* `group(name, words)`
+| Pseudo-Word | Description |
+|--|--|
+| `group()` | capture a named group of words for latter use |
+| `oneOf()` | match one of words |
+
+## Specifiers (Word Anchors)
+
+| Specifier | Description |
+|--|--|
+| `hasBefore(otherWord)` | word is preceded by another word |
+| `hasAfter(otherWord)` | word precedes other word |
+| `isFirst()` | word is very first word in given chain |
+| `isLast()` | word is very last word in given chain |
+| `isWord()` | word is a literal, entire word |
+| `as(name)` | capture word for latter use |
 
 ## Quantifiers
 
-* exact number as _number_, like `2`
-* exact number as _string_, like `'2'`
-* minimum number with _plus sign_, like `'2+'` (two or more times)
-* range with _dash sign_, like `'2-4'` (from two up to four times)
-* minimum number with `min()` method, like `p.min(2)` (two or more times)
-* range with `range()` method, like `p.range(2,4)` (from two up to four times)
-* optional word - zero or one time, can be defined with `'?'` or `p.optional`
-* for _any number of times_ but at least 1: `'+?'` or `p.oneOrMore`
-* for _any number of times_ including 0: `'??'`, `'?+'` or `p.zeroOrMore`
+| Quantifier | Description | Example | |
+|--|--|--|--|
+| `n` or `'n'` | exactly `n` times | `2` or `'2'` | 2 times |
+| `'n+'` | `n` times or more | `'2+'` | at least 2 times |
+| `'n-p'` | between `n` and `p` times | `'2-4'` | 2, 3 or 4 times |
+| `'?'` | 1 or 0 times | `'?'` | word is optional |
+| `'??'` | 0 times or more | `'??'` | 0, 1, 2 or more times |
+| `'?+'` | _as above_ | `'?+'` | _as above_ |
+| `'+?'` | 1 time or more | `'+?'` | at least 1 time |
+| `optional` | like `'?'` | | |
+| `oneOrMore` | like `'+?'` | | |
+| `zeroOrMore` | like `'??'` | | |
+| `min(n)` | `n` times or more | `min(2)` | at least 2 times |
+| `range(n,p)` | between `n` and `p` times | `range(2,4)` | 2,3 or 4 times |
