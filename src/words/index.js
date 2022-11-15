@@ -16,6 +16,7 @@ import { Tab } from '@words/tab';
 import { NewLine } from '@words/new-line';
 import { WhiteSpace } from '@words/white-space';
 import { Emoji } from '@words/emoji';
+import { Ref } from '@words/ref';
 
 /*
 - Letter
@@ -87,6 +88,13 @@ import { Emoji } from '@words/emoji';
 //   };
 // }, {});
 
+/*
+p.DigitFrom('1-4',9)
+p.DigitExcept(1,2,5,6)
+p.DigitExcept(1,'3-6')
+p.DigitExceptFrom(1,4)
+*/
+
 
 const api = {
   Letter: n => new Letter(n),
@@ -106,7 +114,8 @@ const api = {
   Tab: n => new Tab(n),
   NewLine: n => new NewLine(n),
   WhiteSpace: n => new WhiteSpace(n),
-  Emoji: n => new Emoji(n)
+  Emoji: n => new Emoji(n),
+  Ref: (ref, n) => new Ref(ref, n)
 };
 
 /* aliases */

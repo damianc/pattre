@@ -92,6 +92,18 @@ addCase(
     ], 2)
   ]
 );
+
+addCase(
+  'replace 2X2 and 4X4 with **',
+  'AB-2X2-3X3-4X4-2X4-4X2', 'AB-**-3X3-**-2X4-4X2', ['**'],
+  p => [
+    p.group('head', [
+      p.oneOf([2, 4])
+    ]),
+    p.Char('X'),
+    p.Ref('head')
+  ]
+);
 </script>
 
 <script>
