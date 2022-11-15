@@ -49,7 +49,7 @@ str.replace(
 
 ## Words
 
-* - Every word takes a number of occurences as a first parameter. It may be omitted and then defaults to `1`.
+\* - Every word takes a number of occurences as a first parameter. It may be omitted and then defaults to `1`.
 
 | Word | Aliases | Matched stuff |
 |--|--|--|
